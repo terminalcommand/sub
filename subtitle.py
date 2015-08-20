@@ -36,14 +36,11 @@ def search_addicted(name):
     s = requests.get(surl)
     subregexp = '\/\w+$'
     nurl = re.sub(subregexp, '/1', s.url)
-#   n = requests.Session()
     n = requests.get(nurl)
-#   n.headers.update({'referer': nurl})
     soup = BeautifulSoup(n.text, 'html.parser')
     sublinks = []
     sublinks.append(nurl)  # To be used as the referer
     for node in soup.findAll('a', attrs={'class': 'buttonDownload'}):
-        # print(nurl+node['href'])
         sublinks.append('http://www.addic7ed.com' + node['href'])
     return sublinks
 for i in files:
@@ -60,6 +57,5 @@ for i in files:
                 print("Couldn't find a subtitle for " + i)
                 continue
             r = requests.get(addictedlinks[1], headers={'referer': ref})
-            # continue
         with open(i[:-4] + '.srt', 'wb') as fout:
             fout.write(r.content)
