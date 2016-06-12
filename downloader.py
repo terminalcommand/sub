@@ -20,7 +20,6 @@ class Downloader:
                 print("Couldn't find anything for " + filename[:-4])
             else:
                 with open(filename, 'wb') as fout:
-
                     print("Found subtitles for " + filename[:-4])
                     fout.write(response.data)
         except Exception as e:
