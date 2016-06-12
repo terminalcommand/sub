@@ -15,5 +15,6 @@ class SubDB:
         return hashlib.md5(data).hexdigest()
     def gen_dl_link(self, hsh):
         return 'http://api.thesubdb.com/?action=download&hash=' + hsh + '&language=en'
+#        return '/?action=download&hash=' + hsh + '&language=en'
     def process(self, name):
         return self.gen_dl_link(self.get_hash(name))

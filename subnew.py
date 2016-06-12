@@ -12,7 +12,9 @@ subdownloader = Downloader()
 with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
     for i in moviesearcher.return_files():
         link = subsearcher.process(i)
-        print(i)
-        print(link)
-#        subdownloader.download(link, moviesearcher.get_name(i)+'.srt')
-        executor.submit(subdownloader.download, link, moviesearcher.get_name(i)+'.srt')
+#        print(i)
+#        print(link)
+#    subdownloader.download(link, moviesearcher.get_name(i)+'.srt') relic from the old version
+         executor.submit(subdownloader.download, link, moviesearcher.get_name(i)+'.srt')
+ 
+
